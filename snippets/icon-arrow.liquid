@@ -1,0 +1,13 @@
+{% liquid 
+    if direction == "right"
+        assign transform = "rotate(180deg)"
+    elsif direction == "left"
+        assign transform = "rotate(0deg)"
+    endif
+%}
+
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: {{ transform }};">
+    <path d="M22.1667 14H5.83335" stroke="{{ stroke_color }}" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14 5.83334L5.83333 14L14 22.1667" stroke="{{ stroke_color }}" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    

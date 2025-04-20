@@ -15,6 +15,8 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {{ 'font.css' | asset_url | stylesheet_tag }}
+
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -27,7 +29,9 @@
     {% endif %}
 
     {% render 'meta-tags' %}
-
+    <link rel="stylesheet" href="{{ 'swiper-bundle.min.css' | asset_url }}">
+    <script src="{{ 'swiper-bundle.min.js' | asset_url }}" async onload="window.swiperLoaded = true;"></script>
+    
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
@@ -40,6 +44,10 @@
     {%- endif -%}
 
     {{ content_for_header }}
+
+    {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+
+
 
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
@@ -256,6 +264,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -291,11 +300,13 @@
       >
     {%- endif -%}
 
-    <script>
+    <link rel="stylesheet preload prefetch" href="{{ 'custom.scss.css' | asset_url }}" as="style" type="text/css" crossorigin="anonymous">
+
+    {% comment %} <script>
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
-    </script>
+    </script> {% endcomment %}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

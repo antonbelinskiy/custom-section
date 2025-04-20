@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "image_banner": {
       "type": "image-banner",
@@ -38,33 +38,32 @@
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -72,13 +71,132 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "no_bullshit_cbayYP": {
+      "type": "no-bullshit",
+      "blocks": {
+        "slide_AwQKwp": {
+          "type": "slide",
+          "settings": {
+            "title": "Niacinamide",
+            "image": "shopify://shop_images/slide-1.png",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
+            "text_color": "#ffffff"
+          }
+        },
+        "slide_V6zbXh": {
+          "type": "slide",
+          "settings": {
+            "title": "Marula oil",
+            "image": "shopify://shop_images/pexels-michael-obstoj-1772571864-31359125.jpg",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
+            "text_color": "#ffffff"
+          }
+        },
+        "slide_pwfLcq": {
+          "type": "slide",
+          "settings": {
+            "title": "hialuronic acid",
+            "image": "shopify://shop_images/pexels-maximilian-orlowsky-515733-30327991.jpg",
+            "content": "<p><strong>Lorem ipsum dolor sit</strong> amet, consectetur adipiscing elit. </p><ul><li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li><li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li></ul>",
+            "text_color": "#ffffff"
+          }
+        },
+        "slide_Cj49t8": {
+          "type": "slide",
+          "settings": {
+            "title": "peptides",
+            "image": "shopify://shop_images/pexels-cottonbro-3992134.jpg",
+            "content": "<p><strong>Lorem</strong> ipsum dolor sit amet</p><p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  222</p>",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "slide_AwQKwp",
+        "slide_V6zbXh",
+        "slide_pwfLcq",
+        "slide_Cj49t8"
+      ],
+      "settings": {
+        "title": "No bullshit inside",
+        "slider_position": "left",
+        "slider_type": "fade",
+        "content_background_color": "#58656f",
+        "slider_button_color": "#000000",
+        "slider_button_arrow_color": "#ffffff",
+        "slider_button_hover_color": "#ffffff",
+        "slider_button_hover_arrow_color": "#000000",
+        "section_padding": 40
+      }
+    },
+    "no_bullshit_01": {
+      "type": "no-bullshit",
+      "blocks": {
+        "slide_03": {
+          "type": "slide",
+          "settings": {
+            "title": "hialuronic acid",
+            "image": "shopify://shop_images/pexels-maximilian-orlowsky-515733-30327991.jpg",
+            "content": "<p><strong>Lorem ipsum dolor sit</strong> amet, consectetur adipiscing elit. </p><ul><li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li><li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li><li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li></ul>",
+            "text_color": "#fdfffd"
+          }
+        },
+        "slide_04": {
+          "type": "slide",
+          "settings": {
+            "title": "peptides",
+            "image": "shopify://shop_images/pexels-cottonbro-3992134.jpg",
+            "content": "<p><strong>Lorem</strong> ipsum dolor sit amet</p><p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  222</p>",
+            "text_color": "#ffffff"
+          }
+        },
+        "slide_02": {
+          "type": "slide",
+          "settings": {
+            "title": "Marula oil",
+            "image": "shopify://shop_images/pexels-michael-obstoj-1772571864-31359125.jpg",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
+            "text_color": "#ffffff"
+          }
+        },
+        "slide_01": {
+          "type": "slide",
+          "settings": {
+            "title": "Niacinamide",
+            "image": "shopify://shop_images/slide-1.png",
+            "content": "<p><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. <em>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</em>.</p>",
+            "text_color": "#a4a19f"
+          }
+        }
+      },
+      "block_order": [
+        "slide_03",
+        "slide_04",
+        "slide_02",
+        "slide_01"
+      ],
+      "settings": {
+        "title": "No bullshit inside 2",
+        "slider_position": "right",
+        "slider_type": "default",
+        "content_background_color": "#e08686",
+        "slider_button_color": "#ffa700",
+        "slider_button_arrow_color": "#ffffff",
+        "slider_button_hover_color": "#ce2828",
+        "slider_button_hover_arrow_color": "#ffffff",
+        "section_padding": 40
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "no_bullshit_cbayYP",
+    "no_bullshit_01"
   ]
 }

@@ -1,0 +1,254 @@
+<style>
+  .no-bullshit[section-id="{{ section.id }}"] {
+    padding: {{ section.settings.section_padding }}px 0;
+  }
+  .no-bullshit[section-id="{{ section.id }}"] .no-bullshit__banner-content {
+    background-color: {{ section.settings.content_background_color }};
+  }
+
+  .no-bullshit[section-id="{{ section.id }}"] .swiper-navigation-button {
+    background-color: {{ section.settings.slider_button_color }};
+  }
+  .no-bullshit[section-id="{{ section.id }}"] .swiper-navigation-button:hover {
+    background-color: {{ section.settings.slider_button_hover_color }};
+  }
+
+  .no-bullshit[section-id="{{ section.id }}"] .swiper-navigation-button:hover svg path {
+    stroke: {{ section.settings.slider_button_hover_arrow_color }};
+  }
+
+  {% for block in section.blocks %}
+    [block-id="{{ block.id }}"] .no-bullshit__banner-item-content {
+      color: {{ block.settings.text_color }};
+    }
+  {% endfor %}
+</style>
+
+<section section-id="{{ section.id }}" class="no-bullshit">
+  <div class="container">
+    <div class="no-bullshit__content">
+      <h2 class="no-bullshit__title font-primary">{{ section.settings.title }}</h2>
+      <div class="no-bullshit__banner">
+        <div class="no-bullshit__banner-wrapper flex-row-{{ section.settings.slider_position }}">
+          <div class="no-bullshit__banner-slider swiper">
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                <div class="swiper-slide" block-id="{{ block.id }}" data-slide-="{{ forloop.index0 }}">
+                  <div class="no-bullshit__banner-item">
+                    <div class="no-bullshit__banner-item-image">
+                      {%- if block.settings.image -%}
+                        {%- assign img_height = block.settings.image.height -%}
+                        {%- assign img_width = block.settings.image.width -%}
+                        
+                        <img 
+                          srcset="{%- if block.settings.image.width >= 375 -%}{{ block.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+                                 {%- if block.settings.image.width >= 550 -%}{{ block.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                                 {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+                                 {%- if block.settings.image.width >= 1024 -%}{{ block.settings.image | image_url: width: 1024 }} 1024w,{%- endif -%}
+                                 {{ block.settings.image | image_url }} {{ block.settings.image.width }}w"
+                          sizes="(min-width: 1200px) 50vw, 100vw"
+                          src="{{ block.settings.image | image_url: width: 750 }}"
+                          loading="lazy"
+                          width="{{ block.settings.image.width }}"
+                          height="{{ block.settings.image.height }}"
+                          alt="{{ block.settings.image.alt | escape }}"
+                          class="no-bullshit__banner-image"
+                          />
+                        <noscript>
+                          <img 
+                            src="{{ block.settings.image | image_url: width: 750 }}"
+                            loading="lazy"
+                            alt="{{ block.settings.image.alt | escape }}"
+                            width="{{ block.settings.image.width }}"
+                            height="{{ block.settings.image.height }}" />
+                        </noscript>
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                      {%- endif -%}
+                    </div>
+                    <div class="no-bullshit__banner-item-content">
+                      <div class="no-bullshit__banner-item-text font-secondary richtext">
+                        {{ block.settings.content }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+
+          </div>
+          <div class="no-bullshit__banner-content">  
+            {% for block in section.blocks %}
+              <div class="no-bullshit__banner-label font-primary" block-id="{{ block.id }}" data-item="{{ forloop.index0 }}">
+                  {{ block.settings.title }}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="swiper-navigaion">
+          <div class="swiper-navigation-button swiper-navigation-button--prev">
+            {% render 'icon-arrow', direction: 'left', stroke_color: section.settings.slider_button_arrow_color %}
+          </div>
+          <div class="swiper-navigation-button swiper-navigation-button--next">
+            {% render 'icon-arrow', direction: 'right', stroke_color: section.settings.slider_button_arrow_color %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% render 'no-bullshit-scripts', section: section %}
+
+{% schema %}
+{
+  "name": "No Bullshit",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Settings",
+      "info": "Basic section configuration"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "No bullshit inside"
+    },
+    {
+      "type": "select",
+      "id": "slider_position",
+      "label": "Slider Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "slider_type",
+      "label": "Slider Animation Type",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings",
+      "info": "Customize section colors"
+    },
+    {
+      "type": "color",
+      "id": "content_background_color",
+      "label": "Content Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "slider_button_color",
+      "label": "Slider Button Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "slider_button_arrow_color",
+      "label": "Slider Button Arrow Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "slider_button_hover_color",
+      "label": "Slider Button Hover Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "slider_button_hover_arrow_color",
+      "label": "Slider Button Hover Arrow Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing",
+      "info": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Y Padding",
+      "info": "Padding between top and bottom of the section",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content",
+          "info": "Slide content configuration"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Style",
+          "info": "Slide appearance"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "No Bullshit",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
