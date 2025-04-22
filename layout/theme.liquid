@@ -44,10 +44,7 @@
     {%- endif -%}
 
     {{ content_for_header }}
-
-    {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
-
-
+    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
